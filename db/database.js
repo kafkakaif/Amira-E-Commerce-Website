@@ -2,7 +2,11 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
 
-const dbPath = path.join(__dirname, 'amira.db');
+const dbFolder = process.env.DATABASE_DIR || __dirname;
+if (!fs.existsSync(dbFolder)) {
+  fs.mkdirSync(dbFolder, { recursive: true });
+}
+const dbPath = path.join(dbFolder, 'amira.db');
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Error opening database:', err.message);
