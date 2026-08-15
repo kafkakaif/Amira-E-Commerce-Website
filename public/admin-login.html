@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Amira</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-white admin-theme">
+
+  <div class="container-fluid p-0">
+    <div class="row g-0 split-screen-container">
+      
+      <!-- Left Panel: Brand Mark & Art Illustration -->
+      <div class="col-lg-6 d-none d-lg-block split-left-panel">
+        <div class="split-left-overlay">
+          <div>
+            <span class="navbar-brand-serif text-dark fs-2">AMIRA</span>
+            <span class="admin-badge ms-2">Admin Portal</span>
+          </div>
+          <div class="mb-5">
+            <h2 class="display-4 text-dark" style="font-family: var(--font-display); font-weight: 300;">Management &amp; Controls</h2>
+            <p class="text-muted" style="max-width: 400px; font-size: 0.95rem;">Secure administrative environment. Authorize dashboard metrics, inventory logs, shipping records, and account controls.</p>
+          </div>
+          <div class="text-muted" style="font-size: 0.8rem;">
+            &copy; 2026 Amira Atelier. All rights reserved.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Login Form -->
+      <div class="col-lg-6 split-right-panel">
+        <div class="w-100 mx-auto" style="max-width: 420px;">
+          
+          <div class="form-header">
+            <div class="d-lg-none d-flex justify-content-center align-items-center mb-4">
+              <span class="navbar-brand-serif text-dark fs-2">AMIRA</span>
+              <span class="admin-badge ms-2">Admin</span>
+            </div>
+            <h2>Admin Login</h2>
+            <p class="text-muted">Enter administrative credentials to log in.</p>
+          </div>
+
+          <!-- Alert element for errors -->
+          <div class="alert alert-danger d-none" id="loginAlert" role="alert"></div>
+
+          <form id="adminLoginForm">
+            <!-- Email Field -->
+            <div class="mb-4">
+              <label for="email" class="form-label-editorial">Admin Email</label>
+              <input type="email" class="form-control form-control-editorial" id="email" required placeholder="admin@amira.com">
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-4">
+              <label for="password" class="form-label-editorial">Password</label>
+              <input type="password" class="form-control form-control-editorial" id="password" required placeholder="••••••••">
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="btn btn-editorial-dark mt-4">Access Dashboard</button>
+          </form>
+
+          <!-- Footer redirection -->
+          <div class="text-center text-muted mt-5" style="font-size: 0.85rem;">
+            Looking for the customer store? <a href="/" class="fw-semibold text-dark border-bottom border-dark border-1">Back to Home</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

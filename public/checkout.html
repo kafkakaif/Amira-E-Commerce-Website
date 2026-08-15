@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Amira</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+    <!-- Sticky Transparent Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-amira fixed-top" id="mainNavbar">
+    <div class="container-fluid px-md-5 align-items-center justify-content-between position-relative">
+      <!-- Toggle button for offcanvas (visible on mobile only) -->
+      <button class="navbar-toggler border-0 p-0 text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-3"></i>
+      </button>
+
+      <!-- Brand Logo (always centered) -->
+      <a class="navbar-brand-serif logo-centered" href="/">AMIRA</a>
+
+      <!-- Cart Icon (always visible on right) -->
+      <div class="d-flex align-items-center gap-2" style="z-index: 1100;">
+        <a class="position-relative text-dark px-2" href="/cart.html" aria-label="View Cart">
+          <i class="bi bi-bag fs-5"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill cart-badge-pill d-none" id="cartCount">0</span>
+        </a>
+      </div>
+
+      <!-- Offcanvas container for other items (sign up, login, currency toggle, category links) -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+        <div class="offcanvas-header border-bottom border-light">
+          <h5 class="offcanvas-title font-display" id="navbarOffcanvasLabel">AMIRA</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-lg-between w-100 gap-4 gap-lg-0">
+          <!-- Left side: Login/Account status -->
+          <div id="navLeftContainer" class="order-2 order-lg-1 w-100 w-lg-auto">
+            <a class="nav-btn-outline w-100 text-center" href="/login.html" id="navLoginBtn">Login</a>
+          </div>
+          
+          <!-- Middle: Empty spacer on desktop to keep brand centered -->
+          <div class="d-none d-lg-block order-lg-2 spacer-div" style="width: 1px;"></div>
+          
+          <!-- Right side: Sign Up, Currency Toggle -->
+          <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-3 order-1 order-lg-3 w-100 w-lg-auto" id="navRightContainer">
+            <a class="nav-btn-outline w-100 text-center" href="/signup.html" id="navSignupBtn">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Checkout Body -->
+  <main class="py-5 my-5">
+    <div class="container py-4">
+      <h2 class="display-6 mb-5 text-center" style="font-family: var(--font-display);">Complete Your Commission</h2>
+      
+      <!-- Notification alert -->
+      <div id="checkoutAlert" class="alert alert-danger d-none mb-4" role="alert"></div>
+
+      <div class="row g-5">
+        
+        <!-- Billing/Shipping Form -->
+        <div class="col-lg-7">
+          <div class="cart-card-editorial">
+            <h3 class="filter-section-title">Shipping Details</h3>
+            <form id="checkoutForm">
+              
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <label for="shippingName" class="form-label-editorial">Recipient Full Name</label>
+                  <input type="text" class="form-control form-control-editorial" id="shippingName" required placeholder="Jane Doe">
+                </div>
+                <div class="col-md-6">
+                  <label for="shippingPhone" class="form-label-editorial">Phone Number</label>
+                  <input type="tel" class="form-control form-control-editorial" id="shippingPhone" required placeholder="+1 (555) 123-4567">
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="shippingAddressLine" class="form-label-editorial">Street Address</label>
+                <input type="text" class="form-control form-control-editorial" id="shippingAddressLine" required placeholder="123 Atelier Way, Apt 4">
+              </div>
+
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <label for="shippingCity" class="form-label-editorial">City</label>
+                  <input type="text" class="form-control form-control-editorial" id="shippingCity" required placeholder="New York">
+                </div>
+                <div class="col-md-6">
+                  <label for="shippingZip" class="form-label-editorial">Postal / Zip Code</label>
+                  <input type="text" class="form-control form-control-editorial" id="shippingZip" required placeholder="10001">
+                </div>
+              </div>
+
+              <h3 class="filter-section-title mt-5">Payment Method</h3>
+              
+              <div class="mb-4">
+                <div class="form-check form-check-inline me-4">
+                  <input class="form-check-input" type="radio" name="paymentMethod" id="payCreditCard" value="cc" checked style="accent-color: var(--accent-gold);">
+                  <label class="form-check-label text-muted" for="payCreditCard">Credit / Debit Card</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="paymentMethod" id="payBank" value="bank" style="accent-color: var(--accent-gold);">
+                  <label class="form-check-label text-muted" for="payBank">Direct Bank Transfer</label>
+                </div>
+              </div>
+
+              <div id="creditCardDetails">
+                <div class="mb-4">
+                  <label for="cardNumber" class="form-label-editorial">Card Number</label>
+                  <input type="text" class="form-control form-control-editorial" id="cardNumber" placeholder="4000 1234 5678 9010">
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-6">
+                    <label for="cardExpiry" class="form-label-editorial">Expiration Date</label>
+                    <input type="text" class="form-control form-control-editorial" id="cardExpiry" placeholder="MM/YY">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="cardCvv" class="form-label-editorial">Security Code (CVV)</label>
+                    <input type="password" class="form-control form-control-editorial" id="cardCvv" placeholder="•••">
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-editorial-dark mt-4 py-3">Place Your Order</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Summary & Order Confirmation -->
+        <div class="col-lg-5">
+          <div class="cart-card-editorial position-sticky" style="top: 100px;">
+            <h3 class="filter-section-title">Order Review</h3>
+            
+            <div id="checkoutItemsList" class="mb-4">
+              <!-- Rendered dynamically -->
+              <div class="text-center py-4 text-muted">
+                <div class="spinner-border spinner-border-sm text-secondary" role="status"></div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mb-3 text-muted">
+              <span>Subtotal</span>
+              <span id="checkoutSubtotal">$0.00</span>
+            </div>
+
+            <div class="d-flex justify-content-between mb-3 text-muted">
+              <span>Shipping</span>
+              <span class="text-success fw-semibold">Complimentary</span>
+            </div>
+
+            <hr class="my-3" style="border-color: var(--border-light);">
+
+            <div class="d-flex justify-content-between mb-0 fs-5 fw-bold text-dark">
+              <span>Grand Total</span>
+              <span id="checkoutTotal">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-5" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-light);">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h3 class="navbar-brand-serif mb-3">AMIRA</h3>
+          <p class="text-muted" style="font-size: 0.85rem;">Fine-art custom miniature replicas of bridal gowns. Handcrafted with precision, devotion, and premium materials.</p>
+        </div>
+        <div class="col-md-4 offset-md-4 text-md-end">
+          <h5 class="text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 0.15em;">Navigation</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 0.85rem;">
+            <li><a href="/shop.html" class="text-dark">View Catalog</a></li>
+            <li><a href="/profile.html" class="text-dark">Order Tracker</a></li>
+            <li><a href="/admin-login.html" class="text-muted">Administrator Portal</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: var(--border-light);">
+      <div class="row">
+        <div class="col-md-6 text-muted" style="font-size: 0.8rem;">
+          &copy; 2026 Amira Atelier. All rights reserved.
+        </div>
+        <div class="col-md-6 text-md-end text-muted" style="font-size: 0.8rem;">
+          Designed with fine-art aesthetics.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/shop.js"></script>
+</body>
+</html>

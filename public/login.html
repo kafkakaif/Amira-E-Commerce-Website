@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Amira</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-white">
+
+  <div class="container-fluid p-0">
+    <div class="row g-0 split-screen-container">
+      
+      <!-- Left Panel: Brand Mark & Art Illustration -->
+      <div class="col-lg-6 d-none d-lg-block split-left-panel">
+        <div class="split-left-overlay">
+          <div>
+            <a href="/" class="navbar-brand-serif text-dark fs-2">AMIRA</a>
+          </div>
+          <div class="mb-5">
+            <h2 class="display-4 text-dark" style="font-family: var(--font-display); font-weight: 300;">Capturing the essence of your memories.</h2>
+            <p class="text-muted" style="max-width: 400px; font-size: 0.95rem;">Join us to track orders, save shipping information, and manage your custom dress designs.</p>
+          </div>
+          <div class="text-muted" style="font-size: 0.8rem;">
+            &copy; 2026 Amira Atelier. All rights reserved.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Login Form -->
+      <div class="col-lg-6 split-right-panel">
+        <div class="w-100 mx-auto" style="max-width: 420px;">
+          
+          <div class="form-header">
+            <a href="/" class="d-lg-none navbar-brand-serif d-block mb-4 text-center">AMIRA</a>
+            <h2>Welcome Back</h2>
+            <p class="text-muted">Enter your credentials to access your account.</p>
+          </div>
+
+          <!-- Alert element for errors -->
+          <div class="alert alert-danger d-none" id="loginAlert" role="alert"></div>
+
+          <form id="loginForm">
+            <!-- Email Field -->
+            <div class="mb-4">
+              <label for="email" class="form-label-editorial">Email Address</label>
+              <input type="email" class="form-control form-control-editorial" id="email" required placeholder="name@example.com">
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <label for="password" class="form-label-editorial">Password</label>
+                <a href="/forgot-password.html" class="text-muted" style="font-size: 0.75rem;">Forgot your password?</a>
+              </div>
+              <input type="password" class="form-control form-control-editorial" id="password" required placeholder="••••••••">
+            </div>
+
+            <!-- Keep me logged in Checkbox -->
+            <div class="mb-4 form-check">
+              <input type="checkbox" class="form-check-input" id="keepLoggedIn" style="accent-color: var(--accent-gold);">
+              <label class="form-check-label text-muted" for="keepLoggedIn" style="font-size: 0.85rem; user-select: none;">Keep me logged in</label>
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="btn btn-editorial-dark mt-2">Log In</button>
+          </form>
+
+          <!-- Social Login Divider -->
+          <div class="d-flex align-items-center my-4">
+            <hr class="flex-grow-1" style="border-color: var(--border-light);">
+            <span class="px-3 text-muted" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Or sign in with</span>
+            <hr class="flex-grow-1" style="border-color: var(--border-light);">
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="row g-2 mb-2">
+            <div class="col-4">
+              <button type="button" class="btn btn-editorial-outline w-100 social-btn-demo" aria-label="Sign in with Google">
+                <i class="bi bi-google"></i>
+              </button>
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-editorial-outline w-100 social-btn-demo" aria-label="Sign in with Facebook">
+                <i class="bi bi-facebook"></i>
+              </button>
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-editorial-outline w-100 social-btn-demo" aria-label="Sign in with Twitter/X">
+                <i class="bi bi-twitter-x"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Social disclaimer tooltip -->
+          <div class="social-tooltip-msg mb-3" id="socialTooltip">Social login is disabled in this environment.</div>
+
+          <!-- Footer redirection -->
+          <div class="text-center text-muted" style="font-size: 0.85rem;">
+            Not a member yet? <a href="/signup.html" class="fw-semibold text-dark border-bottom border-dark border-1">Sign Up</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

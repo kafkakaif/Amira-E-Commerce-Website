@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Amira</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-white">
+
+  <div class="container-fluid p-0">
+    <div class="row g-0 split-screen-container">
+      
+      <!-- Left Panel: Brand Mark & Art Illustration -->
+      <div class="col-lg-6 d-none d-lg-block split-left-panel">
+        <div class="split-left-overlay">
+          <div>
+            <a href="/" class="navbar-brand-serif text-dark fs-2">AMIRA</a>
+          </div>
+          <div class="mb-5">
+            <h2 class="display-4 text-dark" style="font-family: var(--font-display); font-weight: 300;">Crafting tokens of absolute devotion.</h2>
+            <p class="text-muted" style="max-width: 400px; font-size: 0.95rem;">Join us to track orders, save shipping information, and manage your custom dress designs.</p>
+          </div>
+          <div class="text-muted" style="font-size: 0.8rem;">
+            &copy; 2026 Amira Atelier. All rights reserved.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Signup Form -->
+      <div class="col-lg-6 split-right-panel">
+        <div class="w-100 mx-auto" style="max-width: 420px;">
+          
+          <div class="form-header">
+            <a href="/" class="d-lg-none navbar-brand-serif d-block mb-4 text-center">AMIRA</a>
+            <h2>Create Account</h2>
+            <p class="text-muted">Register to start your wedding dress replica order.</p>
+          </div>
+
+          <!-- Alert element for errors -->
+          <div class="alert alert-danger d-none" id="signupAlert" role="alert"></div>
+
+          <form id="signupForm">
+            <!-- Full Name Field -->
+            <div class="mb-4">
+              <label for="name" class="form-label-editorial">Full Name</label>
+              <input type="text" class="form-control form-control-editorial" id="name" required placeholder="Jane Doe">
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-4">
+              <label for="email" class="form-label-editorial">Email Address</label>
+              <input type="email" class="form-control form-control-editorial" id="email" required placeholder="name@example.com">
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-4">
+              <label for="password" class="form-label-editorial">Password</label>
+              <input type="password" class="form-control form-control-editorial" id="password" required placeholder="Min. 8 characters">
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="mb-4">
+              <label for="confirmPassword" class="form-label-editorial">Confirm Password</label>
+              <input type="password" class="form-control form-control-editorial" id="confirmPassword" required placeholder="Repeat password">
+            </div>
+
+            <!-- Terms & Conditions Checkbox -->
+            <div class="mb-4 form-check">
+              <input type="checkbox" class="form-check-input" id="termsCheck" required style="accent-color: var(--accent-gold);">
+              <label class="form-check-label text-muted" for="termsCheck" style="font-size: 0.85rem; user-select: none;">I agree to the <a href="#" class="text-dark border-bottom border-dark border-1" onclick="alert('This is a demo. Terms are accepted.')">Terms &amp; Conditions</a></label>
+            </div>
+
+            <!-- Signup Button -->
+            <button type="submit" class="btn btn-editorial-dark mt-2">Create Account</button>
+          </form>
+
+          <!-- Footer redirection -->
+          <div class="text-center text-muted mt-4" style="font-size: 0.85rem;">
+            Already have an account? <a href="/login.html" class="fw-semibold text-dark border-bottom border-dark border-1">Login</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

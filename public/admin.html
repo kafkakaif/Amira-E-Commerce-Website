@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Amira</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-theme" style="background-color: var(--bg-primary);">
+
+  <div class="admin-layout">
+    <!-- Sidebar mobile overlay -->
+    <div class="admin-sidebar-overlay" id="adminSidebarOverlay"></div>
+    
+    <!-- Sidebar -->
+    <nav class="admin-sidebar" id="adminSidebar">
+      <div>
+        <div class="admin-sidebar-header">
+          AMIRA
+          <div style="font-size: 0.65rem; font-family: var(--font-body); letter-spacing: 0.1em; opacity: 0.7; margin-top: 0.5rem;">ATELIER ADMIN</div>
+        </div>
+        <ul class="admin-sidebar-nav">
+          <li class="admin-nav-item active" data-target="dashboardTab">
+            <a href="#"><i class="bi bi-grid"></i> Dashboard</a>
+          </li>
+          <li class="admin-nav-item" data-target="productsTab">
+            <a href="#"><i class="bi bi-box-seam"></i> Products</a>
+          </li>
+          <li class="admin-nav-item" data-target="ordersTab">
+            <a href="#"><i class="bi bi-receipt"></i> Orders</a>
+          </li>
+          <li class="admin-nav-item" data-target="usersTab">
+            <a href="#"><i class="bi bi-people"></i> Users</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="d-flex flex-column gap-2 mt-5">
+        <a href="/" class="btn btn-outline-light btn-sm rounded-pill text-uppercase fw-semibold py-2" style="font-size: 0.7rem; letter-spacing: 0.08em; border-color: rgba(255,255,255,0.25);"><i class="bi bi-shop me-1"></i> View Store</a>
+        <button id="adminLogoutBtn" class="btn btn-danger btn-sm rounded-pill text-uppercase fw-semibold py-2" style="font-size: 0.7rem; letter-spacing: 0.08em;"><i class="bi bi-box-arrow-right me-1"></i> Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="admin-main">
+      
+      <!-- Top header bar -->
+      <header class="d-flex justify-content-between align-items-center mb-4 border-bottom border-light pb-3">
+        <div>
+          <button class="btn btn-outline-dark d-lg-none me-2" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <span class="text-uppercase tracking-wider text-muted fs-7" style="letter-spacing: 0.1em;">Management Console</span>
+          <h1 class="h3 mt-1" id="adminPageTitle">Dashboard</h1>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-person-circle fs-5 text-muted"></i>
+          <span class="fw-semibold" style="font-size: 0.9rem;" id="adminHeaderName">Administrator</span>
+        </div>
+      </header>
+
+      <!-- Global notification alert -->
+      <div id="adminGlobalAlert" class="alert d-none mb-4" role="alert"></div>
+
+      <!-- ----------------------------------------------------
+           TAB: DASHBOARD OVERVIEW
+           ---------------------------------------------------- -->
+      <section class="admin-tab-content" id="dashboardTab">
+        <!-- Summary Cards -->
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-3">
+            <div class="admin-metric-card">
+              <span class="text-uppercase text-muted fs-7" style="letter-spacing: 0.08em;">Total Sales</span>
+              <div class="admin-metric-num" id="metricTotalSales">$0.00</div>
+              <div class="text-success" style="font-size: 0.8rem;"><i class="bi bi-arrow-up-right"></i> Live Revenue</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="admin-metric-card">
+              <span class="text-uppercase text-muted fs-7" style="letter-spacing: 0.08em;">Total Orders</span>
+              <div class="admin-metric-num" id="metricTotalOrders">0</div>
+              <div class="text-muted" style="font-size: 0.8rem;">Commission submissions</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="admin-metric-card">
+              <span class="text-uppercase text-muted fs-7" style="letter-spacing: 0.08em;">Products Listed</span>
+              <div class="admin-metric-num" id="metricTotalProducts">0</div>
+              <div class="text-muted" style="font-size: 0.8rem;">Bespoke catalogs</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="admin-metric-card">
+              <span class="text-uppercase text-muted fs-7" style="letter-spacing: 0.08em;">Total Customers</span>
+              <div class="admin-metric-num" id="metricTotalUsers">0</div>
+              <div class="text-muted" style="font-size: 0.8rem;">Registered accounts</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sales Trend CSS Chart -->
+        <div class="chart-container-editorial">
+          <h3 class="h5 mb-4" style="font-family: var(--font-body); font-weight: 600;">Recent Daily Revenue (Last 10 Sales Days)</h3>
+          <div class="bar-chart-visual" id="salesTrendChart">
+            <!-- Rendered dynamically via JS using inline CSS columns -->
+            <div class="text-center w-100 py-5 text-muted">No sales data recorded yet.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------------------
+           TAB: MANAGE PRODUCTS
+           ---------------------------------------------------- -->
+      <section class="admin-tab-content d-none" id="productsTab">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="h5 m-0" style="font-family: var(--font-body); font-weight: 600;">Product Catalogue Listing</h2>
+          <button class="btn btn-dark btn-sm rounded-pill px-4 py-2" id="adminCreateProductBtn" data-bs-toggle="modal" data-bs-target="#productEditorModal">
+            <i class="bi bi-plus-lg me-1"></i> Add New Product
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-editorial table-hover">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 80px;">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col" style="width: 140px;">Category</th>
+                <th scope="col" style="width: 120px; text-align: right;">Price</th>
+                <th scope="col" style="width: 100px; text-align: center;">Stock</th>
+                <th scope="col" style="width: 150px; text-align: center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminProductsTableBody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------------------
+           TAB: MANAGE ORDERS
+           ---------------------------------------------------- -->
+      <section class="admin-tab-content d-none" id="ordersTab">
+        <div class="table-responsive mt-3">
+          <table class="table table-editorial table-hover">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 90px;">Order ID</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Items Ordered</th>
+                <th scope="col" style="width: 130px; text-align: right;">Grand Total</th>
+                <th scope="col" style="width: 160px; text-align: center;">Status</th>
+                <th scope="col" style="width: 180px; text-align: center;">Update Status</th>
+              </tr>
+            </thead>
+            <tbody id="adminOrdersTableBody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------------------
+           TAB: MANAGE USERS
+           ---------------------------------------------------- -->
+      <section class="admin-tab-content d-none" id="usersTab">
+        <div class="table-responsive mt-3">
+          <table class="table table-editorial table-hover">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 80px;">User ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email Address</th>
+                <th scope="col" style="width: 120px; text-align: center;">Role</th>
+                <th scope="col" style="width: 180px;">Registration Date</th>
+                <th scope="col" style="width: 120px; text-align: center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminUsersTableBody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ----------------------------------------------------
+       MODAL: CREATE & EDIT PRODUCT
+       ---------------------------------------------------- -->
+  <div class="modal fade" id="productEditorModal" tabindex="-1" aria-labelledby="productEditorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background-color: var(--bg-primary); border-radius: 4px;">
+        <div class="modal-header border-bottom border-light">
+          <h5 class="modal-title" id="productEditorModalLabel" style="font-family: var(--font-body); font-weight: 600;">Product Configuration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="productEditorForm" enctype="multipart/form-data">
+          <input type="hidden" id="editorProductId" name="id">
+          
+          <div class="modal-body">
+            <!-- Alert banner -->
+            <div id="modalAlert" class="alert alert-danger d-none" role="alert"></div>
+
+            <div class="mb-3">
+              <label for="editorName" class="form-label-editorial">Product Name</label>
+              <input type="text" class="form-control form-control-editorial" id="editorName" name="name" required placeholder="The Classic Keepsake">
+            </div>
+
+             <div class="mb-3">
+              <label for="editorCategory" class="form-label-editorial">Category</label>
+              <select class="form-select form-select-editorial" id="editorCategory" name="category" required>
+                <option value="Dresses - Women">Dresses - Women</option>
+                <option value="Dresses - Men">Dresses - Men</option>
+                <option value="Traditional - Indian">Traditional - Indian</option>
+                <option value="Traditional - Arab">Traditional - Arab</option>
+                <option value="Traditional - Japan">Traditional - Japan</option>
+                <option value="Shoes & Jewellery">Shoes & Jewellery</option>
+              </select>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-6">
+                <label for="editorPrice" class="form-label-editorial">Price ($)</label>
+                <input type="number" class="form-control form-control-editorial" id="editorPrice" name="price" required min="1" step="0.01" placeholder="350.00">
+              </div>
+              <div class="col-6">
+                <label for="editorStock" class="form-label-editorial">Stock Quantity</label>
+                <input type="number" class="form-control form-control-editorial" id="editorStock" name="stock" required min="0" placeholder="25">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="editorDescription" class="form-label-editorial">Description Details</label>
+              <textarea class="form-control form-control-editorial" id="editorDescription" name="description" rows="3" placeholder="Handcrafted with detailed lace embellishments..."></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="editorImage" class="form-label-editorial">Upload Product Image (Leave blank to keep same/default)</label>
+              <input type="file" class="form-control" id="editorImage" name="image" accept="image/*">
+            </div>
+          </div>
+          
+          <div class="modal-footer border-top border-light">
+            <button type="button" class="btn btn-editorial-outline px-4" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-editorial-dark px-4" style="width: auto;">Save Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
