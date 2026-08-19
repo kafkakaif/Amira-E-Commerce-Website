@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: amira-ecommerce
+    env: node
+    buildCommand: npm ci
+    startCommand: node server.js
