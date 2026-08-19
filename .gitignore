@@ -1,0 +1,17 @@
+# Dependencies - NEVER commit these (platform-specific binaries)
+node_modules/
+
+# SQLite database (regenerated from schema.sql on startup)
+db/amira.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
