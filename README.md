@@ -8,8 +8,6 @@
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white">
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
   <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
 </p>
 
@@ -21,7 +19,6 @@
 
 <p>
   <a href="#-features">Features</a> •
-  <a href="#-screenshots">Screenshots</a> •
   <a href="#-technology-stack">Tech Stack</a> •
   <a href="#-installation">Installation</a> •
   <a href="#-project-structure">Structure</a>
@@ -164,38 +161,6 @@ AMIRA includes an administration interface for managing products.
 - Manage product catalogue
 
 This provides administrators with a centralized interface for maintaining the store.
-
----
-
-# 📸 Screenshots
-
-## 🏠 Home Page
-
-![AMIRA Home Page](screenshots/home.png)
-
----
-
-## 👗 Product Catalogue
-
-![AMIRA Shop](screenshots/shop.png)
-
----
-
-## 🛒 Shopping Bag
-
-![AMIRA Shopping Bag](screenshots/cart.png)
-
----
-
-## 💳 Checkout
-
-![AMIRA Checkout](screenshots/checkout.png)
-
----
-
-## 🛠️ Admin Product Management
-
-![AMIRA Admin](screenshots/admin-products.png)
 
 ---
 
